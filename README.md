@@ -1,4 +1,4 @@
-# C-Socket
+# Đồ án: Socket
 ## 1.)	Một số thông tin chung
 -	Thư viện sử dụng: Window Socket 2 của Microsoft
 -	Giao thức sử dụng: HTTP
