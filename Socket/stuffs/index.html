@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url('https://lh3.googleusercontent.com/pw/ACtC-3cfvoTrLXUC6YQmPddtOjKasQo6kRgbl_CHOjKgW0l0A8zaFrl28zReEsbNj9-WloAOkMy9H-ofI6N8Q7xXLvTXOmnTAlyYE64fdP1vbrRZJSjPviOuUMncZR3EBVfWYy0JuqnfTLWOfWS76bPGF8As=w1067-h600-no?authuser=0');
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+    </style>
+    <script>
+    function submitForm() {
+      var response;
+      var request = new Request('index.html');
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var content = `username=${username}&password=${password}`;
+      fetch(request, {
+        method: 'post',
+        body: content
+      }).then(function (response) {
+        if (response.status === 401) {
+          document.getElementById('notification').textContent = 'Wrong username or password';
+        } else {
+          window.location.href = "info.html";
+        }
+      });
+    }
+    </script>
+</head>
+
+<body>
+    <div class="imgcontainer">
+        <img src="https://lh3.googleusercontent.com/pw/ACtC-3doK5qaJV6XOnKgS62Iy_hOHt4OgJdwTcCUoQieOeQNw-3ZQNDP3C1sMinXy_eDbQsBcQxi2HkapKje5AoOvvc-4MuV5DDcJrocOOYi0tqAKtPbA5rM9MKOpamq87S54eSyynu89uWCVUtLfIHbi7uU=w499-h498-no?authuser=0" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="username"><b><font color="lightgreen">Username</font></b></label>
+        <input type="text" placeholder="Username:" id="username" value="">
+        <label for="password"><b><font color="lightgreen">Password</font></b></label>
+        <input type="password" placeholder="Password:" id="password" value="">
+        <label id="notification" style="color: red;"></label>
+        <button type="submit" onclick="submitForm()"><b>Submit</b></button>
+    </div>
+</body>
+</html>
